@@ -8,6 +8,8 @@ sudo pip -r packages
         By default uses the sqlite, change it what you like in settings.py
     ##SMTP settings  
         Change the values in settings.py
+    ##Secret key 
+        SECRET_KEY = '_' to any other value in settings.py
     
 
 #Synchronize DB
