@@ -25,12 +25,19 @@ http://localhost:8080/admin
 #For others 
 http://localhost:8080/
 
+#Authorization url
+http://localhost:8000/o/authorize
+
+
 #Create new client for oauth
 http://localhost:8000/o/applications/register/
-use the redirect url as http://django-oauth-toolkit.herokuapp.com/consumer/exchange/ for testing
+
+
+
 
 #There is a test service at
-http://django-oauth-toolkit.herokuapp.com/consumer/
+- http://django-oauth-toolkit.herokuapp.com/consumer/
+- use the redirect url as http://django-oauth-toolkit.herokuapp.com/consumer/exchange/ for testing
 
 
 #Change the look and feel - needs work :)
