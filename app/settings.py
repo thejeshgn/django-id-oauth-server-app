@@ -1,9 +1,24 @@
+import os,sys
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+print "BASE_DIR="+str(BASE_DIR)
+
+PROJECT_ROOT = os.path.dirname(__file__)
+print "PROJECT_ROOT="+str(PROJECT_ROOT)
+
+sys.path.insert(0,PROJECT_ROOT)
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'dr.sqlite3',
     },
 }
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, "static/")
+print "STATIC_ROOT="+str(STATIC_ROOT)
+STATIC_URL ="/static/"
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -38,6 +53,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
 )
 
 #SMTP SETTINGS
@@ -53,3 +69,8 @@ SEND_ACTIVATION_EMAIL = True
 REGISTRATION_AUTO_LOGIN = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = (
+    'oauth2_provider.backends.OAuth2Backend',
+    'django.contrib.auth.backends.ModelBackend'
+)

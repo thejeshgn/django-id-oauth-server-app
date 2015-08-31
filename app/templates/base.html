@@ -5,25 +5,50 @@
 
 <head>
     <title>User Auth App</title>
+
+  <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <script src="/static/js/jquery-1.9.1.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.js"></script>
+
+
 </head>
 
 <body>
-    <div id="header">
+  <div class="navbar  navbar-fixed-top" id="header">
     {% block header %}
-    <a href="{% url 'index' %}">{% trans "Home" %}</a> |
-
-    {% if user.is_authenticated %}
-        {% trans "Logged in" %}: {{ user.username }}
-        (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> |
-        <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
-    {% else %}
-       <a href="{% url 'auth_login' %}">{% trans "Log In" %}</a>
-    {% endif %}
+    <div class="navbar-inner">
+      <div class="container" >            
+          <a class="brand" href="{% url 'index' %}">{% trans "Home" %}</a>
+        <div class="nav-collapse"> 
+          <ul class="nav">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+                    <li><a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a></li>
+                     <li><a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a></li>
+                {% else %}
+                   <li><a href="{% url 'auth_login' %}">{% trans "Log In" %}</a></li>
+                {% endif %}
+              </ul> 
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
     {% endblock %}
-    </div>
+  </div><!-- /navbar -->
 
+
+
+  <div class="container">
     <div id="content">
-    <h1>{% block title %}{% endblock %}</h1>
+        <header class="jumbotron subhead" id="overview">
+          <div class="row">
+            <div class="span12">
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <h2>{% block title %}{% endblock %}</h2>
+              
+            </div>
+          </div>
+    </header>
     {% block content %}
 
     {% endblock content %}
@@ -34,6 +59,7 @@
 
     {% endblock %}
     </div>
+</div>
 </body>
 
 </html>
