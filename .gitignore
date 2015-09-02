@@ -1,12 +1,3 @@
-.DS_Store
-.classpath
-.project
-.settings/
-.*sw*
-target
 *.pyc
-#.*#
-*~
-env
-activate
-*.sqlite
+*.sqlite3
+app/production_settings.py

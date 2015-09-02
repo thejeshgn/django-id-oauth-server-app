@@ -25,6 +25,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.contenttypes',
+    'django.contrib.staticfiles',
     'django.contrib.admin',
     'oauth2_provider',
     'corsheaders',
@@ -33,19 +34,16 @@ INSTALLED_APPS = (
     'app',
 )
 
-DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
-SECRET_KEY = '_'
 
 SITE_ID = 1
 
 ROOT_URLCONF = 'app.urls_default'
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.app_directories.Loader',
-)
+# TEMPLATE_LOADERS = (
+#     'django.template.loaders.app_directories.Loader',
+# )
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -56,21 +54,24 @@ MIDDLEWARE_CLASSES = (
     'oauth2_provider.middleware.OAuth2TokenMiddleware',
 )
 
-#SMTP SETTINGS
-EMAIL_HOST =''
-EMAIL_PORT =''
-EMAIL_HOST_USER='' 
-EMAIL_HOST_PASSWORD='' 
 
-
-ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_EMAIL_SUBJECT_PREFIX = '[Your App Name]'
-SEND_ACTIVATION_EMAIL = True
-REGISTRATION_AUTO_LOGIN = False
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTHENTICATION_BACKENDS = (
     'oauth2_provider.backends.OAuth2Backend',
     'django.contrib.auth.backends.ModelBackend'
 )
+
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT, 'templates'),
+)
+
+
+
+try:
+    from production_settings import *
+except ImportError:
+    #If production settings are present don't import local settings
+    try:
+        from local_settings import *
+    except ImportError:
+        pass
