@@ -68,10 +68,13 @@ TEMPLATE_DIRS = (
 
 
 try:
+    print "TRYING TO IMPORT PRODUCTION SETTINGS"
     from production_settings import *
 except ImportError:
     #If production settings are present don't import local settings
-    try:
+    print ">>>>> ERROR: NO PRODUCTION SETTINGS, ie. production_settings.py"
+    try:       
         from local_settings import *
+        print "USING TEST SETTINGS"
     except ImportError:
         pass
