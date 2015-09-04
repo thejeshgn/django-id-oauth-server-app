@@ -1,15 +1,13 @@
 #!/bin/bash 
 
-BINDIR=$(dirname $0)
+. ./variables.sh
 
-if [ -z $1 ]; then
-    BIND="0.0.0.0:8000"
-else
-    BIND=$1
-fi
-echo $BINDIR
+touch $DJ_AUTH_APP_PIDFILE
+#TODO for end user
+#1. Do not run uWSGI instances as root. You can start your uWSGIs as root, 
+#   but be sure to drop privileges with the uid and gid options.
 
-cd $BINDIR
-cd ".."
 
-python manage.py runserver $BIND
+
+
+uwsgi --module=app.wsgi:application --env DJANGO_SETTINGS_MODULE=app.settings --master --pidfile=$DJ_AUTH_APP_PIDFILE $DJ_AUTH_APP_PROTOCOL=127.0.0.1:$DJ_AUTH_APP_PORT --processes=$DJ_AUTH_APP_NO_PROCESS --harakiri=20 --max-requests=5000 --vacuum --buffer-size=30000 --daemonize=$DJ_AUTH_APP_LOGFILE     

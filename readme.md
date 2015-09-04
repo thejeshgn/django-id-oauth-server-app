@@ -1,7 +1,9 @@
 #Clone the project
+#Insttttall libararies
+sudo apt-get install python-dev libpcre3 libpcre3-dev
 
 #Install all the packages
-sudo pip -r packages
+sudo pip -r requirements.txt
 
 #Change the values in local_settings.py for test runs
     ##DB Settings
@@ -18,7 +20,7 @@ sudo pip -r packages
 - Never commit production_settings.py
 
 
-#Deploy
+#Get the latest and deploy
 ./bin/deploy.sh
 
 
@@ -27,6 +29,10 @@ sudo pip -r packages
 
 #Run    
 ./bin/run.sh
+
+#Stop
+./bin/stop.sh
+
 
 #URLS
 ##Admin login
