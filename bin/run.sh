@@ -10,4 +10,4 @@ touch $DJ_AUTH_APP_PIDFILE
 
 
 
-uwsgi --module=app.wsgi:application --env DJANGO_SETTINGS_MODULE=app.settings --master --pidfile=$DJ_AUTH_APP_PIDFILE $DJ_AUTH_APP_PROTOCOL=127.0.0.1:$DJ_AUTH_APP_PORT --processes=$DJ_AUTH_APP_NO_PROCESS --harakiri=20 --max-requests=5000 --vacuum --buffer-size=30000 --daemonize=$DJ_AUTH_APP_LOGFILE     
+uwsgi --module=app.wsgi:application --env DJANGO_SETTINGS_MODULE=app.settings --master --pidfile=$DJ_AUTH_APP_PIDFILE $DJ_AUTH_APP_PROTOCOL=$DJ_AUTH_APP_IP:$DJ_AUTH_APP_PORT --processes=$DJ_AUTH_APP_NO_PROCESS --harakiri=20 --max-requests=5000 --vacuum --buffer-size=30000 --daemonize=$DJ_AUTH_APP_LOGFILE     

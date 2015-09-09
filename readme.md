@@ -1,6 +1,7 @@
 #Clone the project
 #Insttttall libararies
-sudo apt-get install python-dev libpcre3 libpcre3-dev
+sudo apt-get install python-dev libpcre3 libpcre3-dev postgresql-9.3 postgresql-contrib-9.3  postgresql-server-dev-9.3 postgresql-client
+
 
 #Install all the packages
 sudo pip -r requirements.txt
