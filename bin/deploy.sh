@@ -10,8 +10,8 @@ git pull
 #delete *.pyc just in case
 find . -name "*.pyc" -exec rm -rf {} \;
 
-pip install -r requirements.txt
+pip install --allow-external --allow-unverified -r requirements.txt
 
 python manage.py migrate
 #mkdir -p static static_local cache
-#python manage.py collectstatic --noinput -c
+python manage.py collectstatic

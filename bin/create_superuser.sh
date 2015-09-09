@@ -2,6 +2,7 @@
 
 BINDIR=$(dirname $0)
 
+echo $BINDIR
 cd $BINDIR
 cd ".."
 

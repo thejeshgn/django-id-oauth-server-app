@@ -1,4 +1,6 @@
 *.pyc
 *.sqlite3
 app/production_settings.py
+bin/production_variables.sh
 app/static/admin
+*.log
